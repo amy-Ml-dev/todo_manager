@@ -3,7 +3,8 @@ class TodosController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render plain: Todo.order(:due_date).map { |todo| todo.to_pleasent_string }.join("\n")
+    #render plain: Todo.order(:due_date).map { |todo| todo.to_pleasent_string }.join("\n")
+    render "index"
   end
 
   def show
