@@ -132,3 +132,6 @@ body{
 .TodoItem-container:hover  .TodoItem-delete{
   visibility: visible;
 }
+.TodoItem-completedText{
+  text-decoration: line-through;
+}
