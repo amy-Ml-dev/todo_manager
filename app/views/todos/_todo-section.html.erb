@@ -22,7 +22,9 @@
               <% end %>
 
               <a class="TodoItem-delete" href="javascript:void(0)">
-                <img src= "trash.svg">
+              <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+                <input type = "image" class = "TodoItem-delete" src= "trash.svg">
+                <% end %>
               </a>
             </li>
           <% end %>
