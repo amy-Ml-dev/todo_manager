@@ -20,9 +20,9 @@
               <% end %>
 
               <a class="TodoItem-delete" href="javascript:void(0)">
-              <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
-               <%= image_submit_tag "trash.svg", class: "TodoItem-delete" %>
-              <% end %>
+                <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+                  <%= image_submit_tag "trash.svg", class: "TodoItem-delete" %>
+                <% end %>
               </a>
             </li>
           <% end %>
