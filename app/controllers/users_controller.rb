@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  #skip_before_action :verify_authenticity_token
   skip_before_action :ensure_user_logged_in
 
   def new
@@ -11,12 +10,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    User.create!(
+    user = User.create!(
       email: params[:email],
       first_name: params[:first_name],
       last_name: params[:last_name],
       password: params[:password],
     )
+    session[:current_user_id] = user.id
     redirect_to "/"
   end
 
