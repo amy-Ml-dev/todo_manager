@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     if current_user
       redirect_to todos_path
     else
-      render "index"
+      render "index", locals: { current_user: current_user }
     end
   end
 end
