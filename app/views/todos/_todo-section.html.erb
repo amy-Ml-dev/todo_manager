@@ -1,30 +1,30 @@
 <section class="TodoSection">
-        <div class="TodoSectionTitle">
-          <p class="TodoSectionTitle-text"><%= section_title %></p>
-          <p class="TodoSectionTitle-remainingCount"><%= todos.completed.count %> / <%= todos.count %></p>
-        </div>
-        <ul>
-          <% todos.each do |todo| %>
-            <li class="TodoItem">
-              <label class="TodoItem-container">
-               <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
-                 <%= check_box_tag "completed", nil, todo.completed, class: "TodoItem-checkbox", onclick: "this.form.submit()" %>
-               <% end %>
+  <div class="TodoSectionTitle">
+    <p class="TodoSectionTitle-text"><%= section_title %></p>
+    <p class="TodoSectionTitle-remainingCount"><%= todos.completed.count %> / <%= todos.count %></p>
+  </div>
+  <ul>
+    <% todos.each do |todo| %>
+      <li class="TodoItem">
+        <label class="TodoItem-container">
+        <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+          <%= check_box_tag "completed", nil, todo.completed, class: "TodoItem-checkbox", onclick: "this.form.submit()" %>
+        <% end %>
 
-              <p class='<%= todo.completed ? "TodoItem-completedText" : "" %>'>
-                 <%= todo.todo_text %>
-              </p>
+      <p class='<%= todo.completed ? "TodoItem-completedText" : "" %>'>
+         <%= todo.todo_text %>
+      </p>
 
-              <% if show_due_date %>
-                <p class="TodoItem-dueDate"><%= todo.due_date.to_s(:short) %></p>
-              <% end %>
+      <% if show_due_date %>
+        <p class="TodoItem-dueDate"><%= todo.due_date.to_s(:short) %></p>
+      <% end %>
 
-              <a class="TodoItem-delete" href="javascript:void(0)">
-                <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
-                  <%= image_submit_tag "trash.svg", class: "TodoItem-delete" %>
-                <% end %>
-              </a>
-            </li>
-          <% end %>
-        </ul>
-      </section>
+      <a class="TodoItem-delete" href="javascript:void(0)">
+        <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+          <%= image_submit_tag "trash.svg", class: "TodoItem-delete" %>
+        <% end %>
+      </a>
+
+    <% end %>
+  </ul>
+</section>

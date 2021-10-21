@@ -12,7 +12,7 @@ class TodosController < ApplicationController
 
   def show
     id = params[:id]
-    todo = Todo.of_user(current_user).find(id)
+    todo = current_user.todos.find(id)
     #render plain: todo.to_pleasent_string
     render "todo"
   end
@@ -29,7 +29,7 @@ class TodosController < ApplicationController
       completed: false,
       user_id: current_user.id,
     )
-    if not new_todo.save
+    if !new_todo.save
       flash[:error] = new_todo.errors.full_messages.join(", ")
       redirect_to todos_path
     else
